@@ -1,32 +1,20 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {
     Building2,
     Clock,
     Cpu,
     FolderKanban,
     ListTodo,
-    LogOut,
     RefreshCw,
 } from "lucide-react";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useDashboardStatistics } from "@/hooks/use-dashboard-statistics";
-import { notify } from "@/lib/toast";
-import { logoutUser } from "@/services/auth.service";
 
 export function DashboardOverview() {
-    const router = useRouter();
     const { stats, isLoading, errorMessage, refresh } = useDashboardStatistics();
-
-    const handleLogout = () => {
-        logoutUser();
-        notify.success("Signed out successfully.");
-        router.replace("/login");
-        router.refresh();
-    };
 
     const cards = [
         {
@@ -36,6 +24,7 @@ export function DashboardOverview() {
             description: "Companies registered in your workspace",
             icon: Building2,
             iconClassName: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+            href: "/companies",
         },
         {
             key: "technologies",
@@ -81,27 +70,16 @@ export function DashboardOverview() {
                     </p>
                 </div>
 
-                <div className="flex items-center gap-2">
-                    <Button
-                        type="button"
-                        variant="outline"
-                        onClick={refresh}
-                        disabled={isLoading}
-                        className="cursor-pointer"
-                    >
-                        <RefreshCw className={`size-4 ${isLoading ? "animate-spin" : ""}`} />
-                        Refresh
-                    </Button>
-                    <Button
-                        type="button"
-                        variant="outline"
-                        onClick={handleLogout}
-                        className="cursor-pointer"
-                    >
-                        <LogOut className="size-4" />
-                        Sign out
-                    </Button>
-                </div>
+                <Button
+                    type="button"
+                    variant="outline"
+                    onClick={refresh}
+                    disabled={isLoading}
+                    className="cursor-pointer self-start sm:self-auto"
+                >
+                    <RefreshCw className={`size-4 ${isLoading ? "animate-spin" : ""}`} />
+                    Refresh
+                </Button>
             </header>
 
             {errorMessage && (
@@ -133,6 +111,7 @@ export function DashboardOverview() {
                         description={card.description}
                         icon={card.icon}
                         iconClassName={card.iconClassName}
+                        href={card.href}
                         isLoading={isLoading}
                     />
                 ))}

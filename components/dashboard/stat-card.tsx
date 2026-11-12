@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "cn";
 import {
@@ -13,6 +14,7 @@ interface StatCardProps {
     description: string;
     icon: LucideIcon;
     iconClassName?: string;
+    href?: string;
     isLoading?: boolean;
 }
 
@@ -22,10 +24,16 @@ export function StatCard({
     description,
     icon: Icon,
     iconClassName,
+    href,
     isLoading = false,
 }: StatCardProps) {
-    return (
-        <Card className="border-border/80 shadow-xs transition-shadow hover:shadow-sm">
+    const card = (
+        <Card
+            className={cn(
+                "h-full border-border/80 shadow-xs transition-shadow hover:shadow-sm",
+                href && "cursor-pointer hover:border-primary/40"
+            )}
+        >
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">
                     {label}
@@ -49,4 +57,6 @@ export function StatCard({
             </CardContent>
         </Card>
     );
+
+    return href ? <Link href={href}>{card}</Link> : card;
 }
