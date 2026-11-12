@@ -1,6 +1,8 @@
 import api, { TOKEN_KEY } from "@/lib/axios";
 import type {
+    ApiResponse,
     AuthResponse,
+    AuthUser,
     LoginRequest,
     LoginResponse,
     RegisterRequest,
@@ -22,6 +24,11 @@ export async function registerUser(payload: RegisterRequest): Promise<RegisterRe
 export async function loginUser(payload: LoginRequest): Promise<LoginResponse> {
     const { data } = await api.post<LoginResponse>("/api/auth/login", payload);
     persistAuthToken(data);
+    return data;
+}
+
+export async function getCurrentUser(): Promise<ApiResponse<AuthUser>> {
+    const { data } = await api.get<ApiResponse<AuthUser>>("/api/auth/me");
     return data;
 }
 
