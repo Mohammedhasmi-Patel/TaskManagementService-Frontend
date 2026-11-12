@@ -33,6 +33,7 @@ export function DashboardOverview() {
             description: "Technologies tracked across projects",
             icon: Cpu,
             iconClassName: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+            href: "/technologies",
         },
         {
             key: "projects",
@@ -41,6 +42,7 @@ export function DashboardOverview() {
             description: "Projects across your companies",
             icon: FolderKanban,
             iconClassName: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+            href: "/projects",
         },
         {
             key: "tasks",

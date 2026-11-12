@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Building2, LayoutDashboard, LogOut } from "lucide-react";
+import { Building2, Cpu, FolderKanban, LayoutDashboard, LogOut } from "lucide-react";
 import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import { notify } from "@/lib/toast";
@@ -11,6 +11,8 @@ import { logoutUser } from "@/services/auth.service";
 const NAV_ITEMS = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/companies", label: "Companies", icon: Building2 },
+    { href: "/technologies", label: "Technologies", icon: Cpu },
+    { href: "/projects", label: "Projects", icon: FolderKanban },
 ];
 
 export function DashboardNavbar() {
