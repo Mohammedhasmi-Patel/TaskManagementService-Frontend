@@ -5,9 +5,11 @@ import { usePathname, useRouter } from "next/navigation";
 import {
     Building2,
     CheckSquare,
+    Clock,
     Cpu,
     FolderKanban,
     LayoutDashboard,
+    ListTodo,
     LogOut,
 } from "lucide-react";
 import { cn } from "cn";
@@ -20,6 +22,8 @@ const NAV_ITEMS = [
     { href: "/companies", label: "Companies", icon: Building2 },
     { href: "/technologies", label: "Technologies", icon: Cpu },
     { href: "/projects", label: "Projects", icon: FolderKanban },
+    { href: "/tasks", label: "Tasks", icon: ListTodo },
+    { href: "/time-entries", label: "Time Entries", icon: Clock },
 ];
 
 interface DashboardSidebarProps {

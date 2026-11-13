@@ -1,5 +1,10 @@
+import { Suspense } from "react";
 import { HomeRedirect } from "@/components/auth/home-redirect";
 
 export default function HomePage() {
-    return <HomeRedirect />;
+    return (
+        <Suspense>
+            <HomeRedirect />
+        </Suspense>
+    );
 }

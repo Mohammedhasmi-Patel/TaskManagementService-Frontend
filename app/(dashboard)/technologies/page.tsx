@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { TechnologiesList } from "@/components/technologies/technologies-list";
 
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function TechnologiesPage() {
-    return <TechnologiesList />;
+    return (
+        <Suspense>
+            <TechnologiesList />
+        </Suspense>
+    );
 }
-

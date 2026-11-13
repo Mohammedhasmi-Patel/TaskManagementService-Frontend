@@ -55,7 +55,7 @@ export function getTechnologiesColumns(
             header: "Slug",
             cell: ({ row }) => (
                 <code className="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-                    /{row.original.slug}
+                    {row.original.slug}
                 </code>
             ),
         },

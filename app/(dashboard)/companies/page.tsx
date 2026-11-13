@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { CompaniesList } from "@/components/companies/companies-list";
 
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function CompaniesPage() {
-    return <CompaniesList />;
+    return (
+        <Suspense>
+            <CompaniesList />
+        </Suspense>
+    );
 }
-

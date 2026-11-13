@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { Suspense, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { CheckSquare, Menu, X } from "lucide-react";
 import { DashboardSidebar } from "@/components/layout/dashboard-sidebar";
@@ -13,7 +13,9 @@ export function DashboardShell({ children }: { children: ReactNode }) {
         <div className="flex min-h-screen bg-muted/20">
             <div className="hidden md:block">
                 <div className="sticky top-0 h-screen">
-                    <DashboardSidebar />
+                    <Suspense fallback={<div className="h-full w-64 border-r border-sidebar-border bg-sidebar" />}>
+                        <DashboardSidebar />
+                    </Suspense>
                 </div>
             </div>
 
@@ -24,7 +26,9 @@ export function DashboardShell({ children }: { children: ReactNode }) {
                         onClick={() => setMobileOpen(false)}
                     />
                     <div className="relative z-10 h-full">
-                        <DashboardSidebar onNavigate={() => setMobileOpen(false)} />
+                        <Suspense fallback={<div className="h-full w-64 border-r border-sidebar-border bg-sidebar" />}>
+                            <DashboardSidebar onNavigate={() => setMobileOpen(false)} />
+                        </Suspense>
                     </div>
                 </div>
             )}

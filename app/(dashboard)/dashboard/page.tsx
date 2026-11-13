@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { DashboardOverview } from "@/components/dashboard/dashboard-overview";
 
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardPage() {
-    return <DashboardOverview />;
+    return (
+        <Suspense>
+            <DashboardOverview />
+        </Suspense>
+    );
 }
-

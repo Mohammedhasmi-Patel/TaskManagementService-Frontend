@@ -51,6 +51,7 @@ export function DashboardOverview() {
             description: "Tasks created across all projects",
             icon: ListTodo,
             iconClassName: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+            href: "/tasks",
         },
         {
             key: "time-entries",
@@ -59,6 +60,7 @@ export function DashboardOverview() {
             description: "Logged work sessions and timers",
             icon: Clock,
             iconClassName: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
+            href: "/time-entries",
         },
     ];
 
